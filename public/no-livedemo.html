@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Demo Not Available</title>
+    <link rel="stylesheet" href="snow.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="no-livedemo.css" />
+</head>
+
+<body>
+    <div class="snow-container"></div>
+    <div class="cursor-glow"></div>
+    <div class="cursor-emoji">⚡</div>
+    <div class="glitch-container">
+        <h1 class="glitch-text" data-text="Live Demo Not Available">Live Demo Not Available</h1>
+        <p class="subtext">Coming Soon. Stay tuned 👀</p>
+        <a href="index.html" class="home-btn">← Back to Portfolio</a>
+    </div>
+    <script>const glow = document.querySelector('.cursor-glow');
+
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = `${e.clientX}px`;
+            glow.style.top = `${e.clientY}px`;
+        });
+        const emojiCursor = document.querySelector('.cursor-emoji');
+        const buttons = document.querySelectorAll('button, .btn, a'); // Add more selectors if needed
+
+        let mouseX = 0, mouseY = 0;
+
+        window.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            emojiCursor.style.left = `${mouseX}px`;
+            emojiCursor.style.top = `${mouseY}px`;
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Hover effect on buttons
+        buttons.forEach((btn) => {
+            btn.addEventListener("mouseenter", () => {
+                emojiCursor.style.transform = "translate(-50%, -50%) scale(0.8)";
+            });
+            btn.addEventListener("mouseleave", () => {
+                emojiCursor.style.transform = "translate(-50%, -50%) scale(1)";
+            });
+        });</script>
+    <script src="snow.js"></script>
+</body>
+
+</html>
